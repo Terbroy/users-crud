@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import { useEffect } from 'react';
 
-const CarsForm = ({getUsers, user, deselectUser}) => {
+const UsersForm = ({getUsers, user, deselectUser}) => {
     const {register, handleSubmit, reset} = useForm ()
     useEffect(()=>{
         if(user){
@@ -68,4 +68,4 @@ const CarsForm = ({getUsers, user, deselectUser}) => {
     );
 };
 
-export default CarsForm;
+export default UsersForm;

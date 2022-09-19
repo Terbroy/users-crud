@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import axios from 'axios'
 import './App.css'
-import CarsForm from './components/CarsForm'
+import UsersForm from './components/UsersForm'
 import { useEffect } from 'react'
-import CarsList from './components/CarsList'
+import UsersList from './components/UsersList'
 
 function App() {
   const [users, setUsers] = useState([])
@@ -34,8 +34,8 @@ function App() {
   console.log(user);
   return (
     <div className="App">
-      <CarsForm getUsers={getUsers} user={user} deselectUser={deselectUser} />
-      <CarsList selectedUser={selectedUser} users={users} getUsers={getUsers} />
+      <UsersForm getUsers={getUsers} user={user} deselectUser={deselectUser} />
+      <UsersList selectedUser={selectedUser} users={users} getUsers={getUsers} />
     </div>
   )
 }

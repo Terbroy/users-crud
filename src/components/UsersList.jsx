@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 
-const CarsList = ({users, selectedUser, getUsers }) => {
+const UsersList = ({users, selectedUser, getUsers }) => {
     const deleteUser = (id) => {
         axios.delete(`https://users-crud1.herokuapp.com/users/${id}`)
         .then(()=> getUsers())
@@ -29,4 +29,4 @@ const CarsList = ({users, selectedUser, getUsers }) => {
     );
 };
 
-export default CarsList;
+export default UsersList;

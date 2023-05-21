@@ -8,7 +8,7 @@ import UsersList from './components/UsersList'
 function App() {
   const [users, setUsers] = useState([])
   const [user, setUser] = useState(null)
-  const [urlApi, setUrlApi] = useState("http://users-crud.academlo.tech/users/")
+  const [urlApi, setUrlApi] = useState("https://users-crud.academlo.tech/users/")
   const [form, setForm] = useState(false)
   const [nameForm, setNameForm] = useState("Create New User")
 

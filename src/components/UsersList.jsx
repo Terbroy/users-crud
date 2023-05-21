@@ -26,7 +26,7 @@ const UsersList = ({setNameForm, users, selectedUser, getUsers, url, setForm }) 
                                 <div className='user-info'>
                                     <span>BIRTHDAY</span>
                                     <div>
-                                    <span class="material-symbols-outlined">redeem</span>
+                                    <span className="material-symbols-outlined">redeem</span>
                                     <small> {user.birthday}</small>
                                     </div>
                                 </div>
@@ -36,7 +36,7 @@ const UsersList = ({setNameForm, users, selectedUser, getUsers, url, setForm }) 
                                     setNameForm("Update User")
                                     setForm(true)
                                 }}>
-                                    <span class="material-symbols-outlined">
+                                    <span className="material-symbols-outlined">
                                     edit
                                     </span>
                                 </button>
@@ -44,7 +44,7 @@ const UsersList = ({setNameForm, users, selectedUser, getUsers, url, setForm }) 
                                     setIsDelete(true)
                                     deleteUser(user)
                                     }}>
-                                    <span class="material-symbols-outlined">
+                                    <span className="material-symbols-outlined">
                                     delete
                                     </span>
                                 </button>

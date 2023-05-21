@@ -19,10 +19,9 @@ function App() {
     .then(res => setUsers(res.data))
   }
 
-console.log(nameForm);
 
   useEffect(() => {
-    getUsers
+    getUsers()
   }, [])
 
   const selectedUser = (user) => {

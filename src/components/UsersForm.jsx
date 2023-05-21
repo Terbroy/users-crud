@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useEffect } from 'react';
 
 const UsersForm = ({nameForm, setNameForm, setForm, form, getUsers, user, deselectUser, url}) => {
+    
     const {register, handleSubmit, reset} = useForm ()
     useEffect(()=>{
         if(user){

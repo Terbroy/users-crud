@@ -3,7 +3,7 @@ import {useForm} from 'react-hook-form'
 import axios from 'axios'
 import { useEffect } from 'react';
 
-const UsersForm = ({getUsers, user, deselectUser}) => {
+const UsersForm = ({nameForm, setNameForm, setForm, form, getUsers, user, deselectUser, url}) => {
     const {register, handleSubmit, reset} = useForm ()
     useEffect(()=>{
         if(user){
@@ -11,15 +11,16 @@ const UsersForm = ({getUsers, user, deselectUser}) => {
         }
     },[user])
 
+    
+
     const submit = data =>{
-        console.log(data);
         if(user){
             axios
-            .put(`https://users-crud1.herokuapp.com/users/${data.id}/`, data)
+            .put(`${url}${data.id}/`, data)
             .then(()=>getUsers())
             .catch((error) => console.log(error.response));
         }else{
-        axios.post('https://users-crud1.herokuapp.com/users/', data)
+        axios.post(url, data)
         .then(()=> getUsers())
         .catch(error=> console.log(error.response, user))
         }
@@ -38,33 +39,46 @@ const UsersForm = ({getUsers, user, deselectUser}) => {
       }
     
     return (
+        <div className='container'>
         <form className='card' onSubmit={handleSubmit(submit)}>
-            <h1>Users Form</h1>
+            <button className='btn_input' onClick={() => {
+                clear()
+                setNameForm("New User")
+                setForm(false)           
+            }}><span class="material-symbols-outlined">
+            close
+            </span></button>
+            <h2 className='title-form'>{nameForm}</h2>
             <div className='info'>
             <div>
-                <label htmlFor="email"> Email</label>
-                <input type="email" id='email' {...register('email')}  required/>
+                <label className='label' htmlFor="email"> Email</label>
+                <input className='input_form' type="email" id='email' {...register('email')}  required/>
             </div>
             <div>
-                <label htmlFor="password">Password</label>
-                <input type="text" id='password' {...register('password')} required/>
+                <label className='label' htmlFor="password">Password</label>
+                <input className='input_form' type="text" id='password' {...register('password')} required/>
             </div>
             <div>
-                <label htmlFor="first_name">First Name</label>
-                <input type="text" id='first_name' {...register('first_name')} required/>
+                <label className='label' htmlFor="first_name">First Name</label>
+                <input className='input_form' type="text" id='first_name' {...register('first_name')} required/>
             </div>
             <div>
-                <label htmlFor="last_name">Last Name</label>
-                <input type="text" id='last_name' {...register('last_name')} required/>
+                <label className='label' htmlFor="last_name">Last Name</label>
+                <input className='input_form' type="text" id='last_name' {...register('last_name')} required/>
             </div>
             <div>
-                <label htmlFor="birthday">Birthday</label>
-                <input type="date" id='birthday' {...register('birthday')} required/>
+                <label className='label' htmlFor="birthday">Birthday</label>
+                <input className='input_form' type="date" id='birthday' {...register('birthday')} required/>
             </div>
             </div>
-            <button>Submit</button>
-            <button onClick={clear}>Clear</button>
+            <div className="buttons">
+            <button className='user-button btn' >Add New User</button>
+            <button className='container-delete' onClick={clear}><span class="delete-btn material-symbols-outlined">
+delete
+</span></button>
+            </div>
         </form>
+        </div>
     );
 };
 

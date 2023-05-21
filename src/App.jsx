@@ -8,34 +8,41 @@ import UsersList from './components/UsersList'
 function App() {
   const [users, setUsers] = useState([])
   const [user, setUser] = useState(null)
+  const [urlApi, setUrlApi] = useState("http://users-crud.academlo.tech/users/")
+  const [form, setForm] = useState(false)
+  const [nameForm, setNameForm] = useState("Create New User")
 
-
-  useEffect(() => {
-    axios
-      .get('https://users-crud1.herokuapp.com/users/')
-      .then(res => setUsers(res.data))
-  }, [])
   
   const getUsers = () => {
     axios
-    .get('https://users-crud1.herokuapp.com/users/')
+    .get(urlApi)
     .then(res => setUsers(res.data))
   }
+
+console.log(nameForm);
+
+  useEffect(() => {
+    getUsers
+  }, [])
+
   const selectedUser = (user) => {
     setUser(user)
   }
   
-
-  // const deleteCar =(id)=>{
-  //   axios.delete(`https://cars-crud.herokuapp.com/cars/${id}/`)
-  //   getUsers()
-  // }
   const deselectUser = () => setUser(null)
-  console.log(user);
+
   return (
     <div className="App">
-      <UsersForm getUsers={getUsers} user={user} deselectUser={deselectUser} />
-      <UsersList selectedUser={selectedUser} users={users} getUsers={getUsers} />
+      <h1 className='title'>Users</h1>
+      <button className='new_user-button btn' onClick={()=>{
+        setForm(true)
+      }}> <span>+ </span> <p>Create New User</p></button>
+      {
+        form && (
+          <UsersForm nameForm={nameForm} setNameForm={setNameForm} form={form} url={urlApi} setForm={setForm} getUsers={getUsers} user={user} deselectUser={deselectUser} />
+        )
+      }
+      <UsersList setNameForm={setNameForm} setForm={setForm} form={form} url={urlApi} selectedUser={selectedUser} users={users} getUsers={getUsers} />
     </div>
   )
 }
